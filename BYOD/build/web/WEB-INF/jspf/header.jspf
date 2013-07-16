@@ -1,0 +1,22 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
+        <link href ="resources/images/logo2.GIF" rel ="icon" type ="image/x-icon" />
+        
+        <title>Bring Your Own Device</title>
+    </head>
+    <body>
+        <div id="top">
+                    <img src="resources/images/BYOD%20Logo.png" alt="Logo" width="220" height="80"  /> 
+                    <div id= "WidgetBar">
+                        <div class ="LogOutWidget">
+                            <a>Log out</a>
+                        </div>>
+                    </div>
+        </div>

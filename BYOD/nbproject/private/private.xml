@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/Users/madenem/Documents/COS301/Main%20project/Server/BYOD/nbproject/build-impl.xml</file>
+        <file>file:/C:/Users/madenem/Documents/COS301/Main%20project/Server/BYOD/web/index.jsp</file>
+        <file>file:/C:/Users/madenem/Documents/COS301/Main%20project/Server/BYOD/src/java/controller/ControllerServlet.java</file>
+        <file>file:/C:/Users/madenem/Documents/COS301/Main%20project/Server/BYOD/src/java/entity/DevicePK.java</file>
+        <file>file:/C:/Users/madenem/Documents/COS301/Main%20project/Server/BYOD/web/WEB-INF/view/devRegister.jsp</file>
+        <file>file:/C:/Users/madenem/Documents/COS301/Main%20project/Server/BYOD/src/java/session/RegistrationManager.java</file>
+        <file>file:/C:/Users/madenem/Documents/COS301/Main%20project/Server/BYOD/src/java/entity/Device.java</file>
+        <file>file:/C:/Users/madenem/Documents/COS301/Main%20project/Server/BYOD/src/java/entity/Technician.java</file>
+        <file>file:/C:/Users/madenem/Documents/COS301/Main%20project/Server/BYOD/web/WEB-INF/jspf/header.jspf</file>
+    </open-files>
 </project-private>

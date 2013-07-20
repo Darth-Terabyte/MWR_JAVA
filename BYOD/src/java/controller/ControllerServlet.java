@@ -4,6 +4,7 @@
  */
 package controller;
 
+import entity.Employee;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import session.EmployeeFacade;
+import session.RegistrationManager;
 import session.TechnicianFacade;
 //import session.DeviceFacade;
 
@@ -21,7 +24,7 @@ import session.TechnicianFacade;
  */
 @WebServlet(name="ControllerServlet",
             loadOnStartup = 1,
-            urlPatterns = {"/technicians"})
+            urlPatterns = {"/technicians","/employees","/register","/registerDevice"})
 public class ControllerServlet extends HttpServlet {
 
     /**
@@ -34,15 +37,24 @@ public class ControllerServlet extends HttpServlet {
     
     @EJB
     private TechnicianFacade techFacade;
+    @EJB
+    private EmployeeFacade empFacade;
+    @EJB
+    private RegistrationManager regMan;
+    
 
     @Override
     public void init() throws ServletException {
-
+        
         // store category list in servlet context
         getServletContext().setAttribute("technicians", techFacade.findAll());
+        getServletContext().setAttribute("employees", empFacade.findAll());
         
         //System.out.println(techFacade.findAll().size());
+
     }
+    
+
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -50,12 +62,25 @@ public class ControllerServlet extends HttpServlet {
 
         String userPath = request.getServletPath();
 
-        // if category page is requested
+       
         if (userPath.equals("/technicians")) {
-            // TODO: Implement category request
-            userPath = "/admin_Technicians_List";
-        // if cart page is requested
+           
+            userPath = "/admin_Technicians_List";        
         } 
+        
+        else if (userPath.equals("/employees")) {
+
+            // TODO: Implement category request
+            userPath = "/admin_Employees_List";
+        // if cart page is requested
+        }
+        
+                else if (userPath.equals("/register")) {
+
+            // TODO: Implement category request
+            userPath = "/devRegister";
+        // if cart page is requested
+        }
         
 
         // use RequestDispatcher to forward request internally
@@ -81,12 +106,19 @@ public class ControllerServlet extends HttpServlet {
 
         String userPath = request.getServletPath();
 
-        if (userPath.equals("/technicians")) {
+        if (userPath.equals("/registerDevice")) {
+
             // TODO: Implement category request
-            userPath = "/admin_Technicians_List";
+           String mac = request.getParameter("mac");
+           String serial = request.getParameter("serial");
+           String uid = request.getParameter("uid");
+           String make = request.getParameter("make");
+           String model = request.getParameter("model");
+           int id = Integer.parseInt(request.getParameter("emp"));
+           Employee emp = empFacade.find(id);
+           regMan.addDevice(make, model, emp, mac, uid, serial);
         // if cart page is requested
         }
-
         // use RequestDispatcher to forward request internally
         String url = "/WEB-INF/view" + userPath + ".jsp";
 

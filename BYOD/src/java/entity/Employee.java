@@ -41,10 +41,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Employee.findByPassword", query = "SELECT e FROM Employee e WHERE e.password = :password"),
     @NamedQuery(name = "Employee.findByDateRegistered", query = "SELECT e FROM Employee e WHERE e.dateRegistered = :dateRegistered")})
 public class Employee implements Serializable {
-    @Lob
-    @Column(name = "photo")
-    private byte[] photo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeempID")
     private Collection<Device> deviceCollection;
     private static final long serialVersionUID = 1L;
     @Id
@@ -153,13 +149,6 @@ public class Employee implements Serializable {
         return "entity.Employee[ empID=" + empID + " ]";
     }
 
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
 
     @XmlTransient
     public Collection<Device> getDeviceCollection() {

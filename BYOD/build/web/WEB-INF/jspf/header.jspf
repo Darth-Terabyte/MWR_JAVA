@@ -16,7 +16,10 @@
                     <img src="resources/images/BYOD%20Logo.png" alt="Logo" width="220" height="80"  /> 
                     <div id= "WidgetBar">
                         <div class ="LogOutWidget">
-                            <a>Log out</a>
-                        </div>>
+                            <a href ="waitingList">Registration waiting list</a>
+                            <a href ="devices">Devices</a>
+                            <a href="employees">Employees</a>
+                            <a href="scans">Scan results</a>
+                        </div>
                     </div>
         </div>

@@ -58,8 +58,8 @@
 }
 
 .portal{
-    padding-top: 7%;
-    padding-left: 40%;
+    padding-top: 4%;
+    padding-left: 15%;
     padding-bottom: 7%;
     color: #006699;
 }
@@ -110,7 +110,7 @@
 }
 
 #markermenu a:link:hover, #markermenu a:visited:hover  {
-  color: black;
+
   font-weight : bold;
   text-decoration : underline;
 }

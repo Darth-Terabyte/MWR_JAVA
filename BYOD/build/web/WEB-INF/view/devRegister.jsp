@@ -1,6 +1,8 @@
  <form action="registerDevice" method="post">
-                        EmployeeID<input type="text"
+                        username<input type="text"
                                name="emp">
+                        password<input type="text"
+                                       name ="password">
                         Make<input type="text"
                                name="make">
                         Model<input type="text"
@@ -10,7 +12,7 @@
                         Serial number<input type="text"
                                name="serial">
                         UID<input type="text"
-                               name="uid">
+                               name="android">
                         <input type="submit"
                                name="submit"
                                value="add to cart">

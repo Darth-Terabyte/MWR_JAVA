@@ -5,26 +5,21 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,12 +31,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e"),
     @NamedQuery(name = "Employee.findByEmpID", query = "SELECT e FROM Employee e WHERE e.empID = :empID"),
-    @NamedQuery(name = "Employee.findByEmployeeCode", query = "SELECT e FROM Employee e WHERE e.employeeCode = :employeeCode"),
-    @NamedQuery(name = "Employee.findByUserName", query = "SELECT e FROM Employee e WHERE e.userName = :userName"),
+    @NamedQuery(name = "Employee.findByUsername", query = "SELECT e FROM Employee e WHERE e.username = :username"),
     @NamedQuery(name = "Employee.findByPassword", query = "SELECT e FROM Employee e WHERE e.password = :password"),
-    @NamedQuery(name = "Employee.findByDateRegistered", query = "SELECT e FROM Employee e WHERE e.dateRegistered = :dateRegistered")})
+    @NamedQuery(name = "Employee.findByDateRegistered", query = "SELECT e FROM Employee e WHERE e.dateRegistered = :dateRegistered"),
+    @NamedQuery(name = "Employee.findByName", query = "SELECT e FROM Employee e WHERE e.name = :name"),
+    @NamedQuery(name = "Employee.findBySurname", query = "SELECT e FROM Employee e WHERE e.surname = :surname"),
+    @NamedQuery(name = "Employee.findByIdnumber", query = "SELECT e FROM Employee e WHERE e.idnumber = :idnumber")})
 public class Employee implements Serializable {
-    private Collection<Device> deviceCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,14 +46,9 @@ public class Employee implements Serializable {
     private Integer empID;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 60)
-    @Column(name = "employeeCode")
-    private String employeeCode;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "userName")
-    private String userName;
+    @Column(name = "username")
+    private String username;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -68,6 +59,21 @@ public class Employee implements Serializable {
     @Column(name = "dateRegistered")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateRegistered;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "name")
+    private String name;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "surname")
+    private String surname;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "idnumber")
+    private String idnumber;
 
     public Employee() {
     }
@@ -76,12 +82,24 @@ public class Employee implements Serializable {
         this.empID = empID;
     }
 
-    public Employee(Integer empID, String employeeCode, String userName, String password, Date dateRegistered) {
+    public Employee(Integer empID, String username, String password, Date dateRegistered, String name, String surname, String idnumber) {
         this.empID = empID;
-        this.employeeCode = employeeCode;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.dateRegistered = dateRegistered;
+        this.name = name;
+        this.surname = surname;
+        this.idnumber = idnumber;
+    }
+    
+    public Employee(String username, String password, Date dateRegistered, String name, String surname, String idnumber) {
+
+        this.username = username;
+        this.password = password;
+        this.dateRegistered = dateRegistered;
+        this.name = name;
+        this.surname = surname;
+        this.idnumber = idnumber;
     }
 
     public Integer getEmpID() {
@@ -92,20 +110,12 @@ public class Employee implements Serializable {
         this.empID = empID;
     }
 
-    public String getEmployeeCode() {
-        return employeeCode;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -122,6 +132,30 @@ public class Employee implements Serializable {
 
     public void setDateRegistered(Date dateRegistered) {
         this.dateRegistered = dateRegistered;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getIdnumber() {
+        return idnumber;
+    }
+
+    public void setIdnumber(String idnumber) {
+        this.idnumber = idnumber;
     }
 
     @Override
@@ -147,16 +181,6 @@ public class Employee implements Serializable {
     @Override
     public String toString() {
         return "entity.Employee[ empID=" + empID + " ]";
-    }
-
-
-    @XmlTransient
-    public Collection<Device> getDeviceCollection() {
-        return deviceCollection;
-    }
-
-    public void setDeviceCollection(Collection<Device> deviceCollection) {
-        this.deviceCollection = deviceCollection;
     }
     
 }

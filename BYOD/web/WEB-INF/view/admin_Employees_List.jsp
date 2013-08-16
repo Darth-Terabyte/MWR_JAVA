@@ -27,13 +27,15 @@
 
         <table class = "table">
                 <tr class =  "head">
-                        <td > Employee Code </td>
+                        <td > Name </td>
+                         <td > Surname </td>
                         <td > Username </td>
                         <td > Date Registered </td>
                 </tr>  
                 <c:forEach var="emp" items="${employees}">
-                    <tr><td>${emp.employeeCode}</td>
-                    <td>${emp.userName}</td>
+                    <tr><td>${emp.name}</td>
+                        <td>${emp.surname}</td>
+                    <td>${emp.username}</td>
                     <td>${emp.dateRegistered}</td>
                     </tr>
                 </c:forEach>
